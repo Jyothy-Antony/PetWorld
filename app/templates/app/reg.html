@@ -1,0 +1,19 @@
+    
+    
+    
+    
+    <center><h1>Registration</h1></center>
+    <form method="post" action="{% url 'app:reg' %}">{% csrf_token %}
+        Username :<input type="text" name="username"><br>
+        password :<input type="password" name="password"><br>
+        Email :<input type="email" name="email"><br>
+        Type :<select name="usertype">
+            <option value="user">User</option>
+            <option value="trainer">Trainer</option>
+            <option value="boarding">Boarding</option>
+        </select><br>
+        Phone :<input type="text" name="phone"><br>
+        Experience :<input type="text" name="exp"><br>
+        Company Name :<input type="text" name="compname"><br><br>
+        <input type="submit" value="Submit">
+    </form>

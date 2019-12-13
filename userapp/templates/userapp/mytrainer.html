@@ -1,0 +1,89 @@
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+<style>
+    .mydivs
+    {
+        padding: 15px;
+        height: auto;
+        margin-left: 10px;
+        background-color:rgb(199, 202, 206);
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .mydivs:hover
+    {
+        background-color:rgb(145, 148, 151);
+    }
+    .profilimg
+    {
+        width: 100px;
+        height:100px;
+        overflow: hidden;
+        margin-left: 10px;
+        border-radius: 5px;
+    }
+    .proimg
+    {
+        width: 100px;
+    }
+    </style>
+<div class="w3-col m7">
+    
+        <!--div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <div class="w3-container w3-padding">
+                <h6 class="w3-opacity">Social Media template by w3.css</h6>
+                <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+                <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> �Post</button> 
+              </div>
+            </div>
+          </div>
+        </div-->
+        
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+       
+          <h4>Trainers</h4><br>
+          <hr class="w3-clear">
+          <p></p>
+          <div class="row">
+              
+            
+            {% for i in data2 %}
+              {% for j in fulldata %}
+                {% with a=i.varid %}
+                  {% with b=j.id %}
+                    {% if a == b %}
+                      <div class="mydivs col-md-6">
+                          <h6>{{j.fname}} {{j.fname}}</h6><h5 style="float: right;" ></h5>
+                      <div class="row">
+                        <div class="profilimg">
+                          <img src="{{j.propic.url}}" style="
+                          width: 150px;
+                      " class="proimg">
+                        </div>
+                        <div style="margin-left: 10px;">
+                          <a class="btn btn-danger" style="margin-bottom: 10px;" href="{% url 'userapp:bfull' id=j.id %}">More..</a><br>
+                          <a class="btn btn-danger" style="margin-bottom: 10px;"  href='{% url 'userapp:chat' j.id %}?id=j.id' >Chat</a>
+                          <a class="btn btn-danger" style="margin-bottom: 10px;" href="{% url 'userapp:monthpay' j.id %}?id=j.id">Pay</a><br>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  {% endif %}
+                {% endwith %}
+              {% endwith %}
+            
+            {% endfor %}
+          {% endfor %}
+              </div>
+          
+        </div>  
+  
+        
+        
+      <!-- End Middle Column -->
+      </div>
+{% endblock %}

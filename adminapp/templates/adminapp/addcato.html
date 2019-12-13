@@ -1,0 +1,45 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+
+<style>
+.form-control
+{
+        margin-bottom: 10px;
+}
+</style>
+    <div class="w3-col m7">
+    
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
+       
+        <h4>Add Items</h4><br>
+        <hr class="w3-clear">
+        <p>Add all types of shopping item here </p><br><br>
+          <div class="w3-row-padding" style="margin:0 -16px">
+                <form action="{% url 'adminapp:addcato' %}" method="POST" class="form-horizontal" role="form">{% csrf_token %}
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                          Category Name :      
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" class="form-control" name="cato">
+                                        </div>
+                                </div>
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <center><button type="submit" class="btn btn-primary" style="padding: 10px 0px; width: 100%">Submit</button></center>
+                            </div>
+                        </div>
+                </form>
+                
+
+
+             
+        </div>
+        </div>
+        
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

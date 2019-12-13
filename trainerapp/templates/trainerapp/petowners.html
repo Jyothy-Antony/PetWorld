@@ -1,0 +1,125 @@
+{% extends "trainerapp/trainlayout.html" %}
+{% block content %}
+<div class="w3-col m7">
+       
+        
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+         
+
+          <style>
+          .mydivs
+          {
+              padding: 15px;
+              height: 150px;
+              margin-left: 10px;
+              background-color:rgb(199, 202, 206);
+              margin-bottom: 10px;
+              border-radius: 5px;
+          }
+          .mydivs:hover
+          {
+              background-color:rgb(145, 148, 151);
+          }
+          .profilimg
+          {
+              width: 100px;
+              height:100px;
+              overflow: hidden;
+              margin-left: 10px;
+              border-radius: 5px;
+          }
+          .proimg
+          {
+              width: 100px;
+          }
+          </style>
+          <div class="row">
+            {% for j in udata %}  
+              {% for i in data2 %}
+                {% with a=j.id %}
+                  {% with b=i.usersid %}
+                    {% if a == b %}
+                        <div class="mydivs col-md-6">
+                            <div class="row">
+                                <div class="profilimg">
+                                    <img src="../../static/app/img/blog_1.jpg" class="proimg">
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <a class="btn btn-danger" style="margin-bottom: 10px;" href="{% url 'trainerapp:petowner' id=j.id %}">More..</a><br>
+                                    <a class="btn btn-danger" href='{% url 'trainerapp:chat' j.id %}?id=j.id' >Chat</a>
+                                    <a class="btn btn-danger" href='{% url 'trainerapp:viewpets' i.petid %}' >view pet</a>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    
+                                    
+                                    <div class="modal fade" id="modal-id">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">Add Media</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{% url 'trainerapp:addmedia' id=j.id %}" method="POST" enctype="multipart/form-data" role="form">{% csrf_token %}
+                                                        <legend></legend>
+                                                            <div class="form-group">
+                                                                <label for=""></label>
+                                                                <select onchange="myfun()" name="vidimg" id="vidimg{{i.id}}" class="form-control" required="required" 
+                                                                
+                                                                
+                                                                
+                                                                >
+                                                                    <option value="image">Image</option>
+                                                                    <option value="video">Video</option>
+                                                                </select>
+                                                                <input type="hidden" value="{{i.petid}}" name="petid">
+                                                                <input type="file" name="media" multiple id="media{{i.id}}" accept="image/gif, image/jpeg" class="form-control" value=""  required="required" title="">
+                                                                <script>
+                                                                    function myfun()
+                                                                    {
+                                                                        var nan=document.getElementById("vidimg{{i.id}}").value
+                                                                        if (nan == "image")
+                                                                        {
+                                                                            document.getElementById("media{{i.id}}").accept="image/gif, image/jpeg"
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            document.getElementById("media{{i.id}}").accept="video/*"
+                                                                        }
+                                                                    }
+                                                                </script>
+                                                            </div>
+                                                        
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </form>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="mytext">
+                                <h6>{{j.username}}</h6>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                   {% endwith %}
+                 {% endwith %}
+               {% endfor %}
+             {% endfor %}
+          </div>
+          <br>
+        </div>  
+        
+        
+      <!-- End Middle Column -->
+      </div>
+{% endblock %}

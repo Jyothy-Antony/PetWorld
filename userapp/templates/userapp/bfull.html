@@ -1,0 +1,109 @@
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+    <div class="w3-col m7">
+    
+      <!-- <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Social Media template by w3.css</h6>
+              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> �Post</button> 
+            </div>
+          </div>
+        </div>
+      </div> -->
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="{{data12.propic.url}}"  style="width: 100px;" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+     
+        <h4>{{data12.fname}}{{data12.lname}}</h4><br>
+        <hr class="w3-clear">
+        <p>Boarding kennels. This is a place where dogs or cats are housed temporarily for a fee, an alternative to using a pet sitter. Although many people worry about the stress placed on the animal by being put in an unfamiliar and most likely crowded environment, the majority of boarding kennels work to reduce stress.</p>
+        
+        
+        <table class="table table-striped table-hover">
+            <tbody>
+                  
+                    <tr><td>Email </td><td>{{data12.email}}</td></tr>
+                    <tr><td>Phone </td><td>{{data12.phone}}</td></tr>
+                    <tr><td>Experience </td><td>{{data12.exp}}</td></tr>
+                    <tr><td>Company name </td><td>{{data12.compname}}</td></tr>
+                    
+            </tbody>
+        </table>
+        <a class="btn btn-danger" data-toggle="modal" href='#modal-id{{data12.id}}' >Add Request</a>
+        
+        <br>
+        <br>
+        <!--Model start-->
+        <div class="modal fade" id="modal-id{{data12.id}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal title</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                    
+                    <form action="{% url 'userapp:userbreg' %}" method="POST" role="form">
+                        {% csrf_token %} <legend>Request Boardings</legend>
+                            <div class="form-group">
+                                <label for="">Matter :</label>
+                                <textarea name="matter" id="input" class="form-control" rows="3" required="required"></textarea>
+                            </div>
+                            <input type="hidden" name="boardingid" value="{{data12.id}}">
+                            <div class="form-group">
+                                <label for="">Dog Name :</label>
+                                <select name="arg1" id="input" class="form-control" required="required">
+                                    <option value="">------select------</option>
+                                    {% for j in pets %}
+                                    <option value="{{j.id}}">{{j.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+                    </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+       
+            <div class="w3-card w3-round w3-white w3-center">
+              <div class="w3-container">
+                <p>Payment Details:</p>
+               
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                           <th>Breed</th>
+                          <th>Monthly Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% for i in data2 %}
+                        <tr>
+                            <td>{{i.breed}}</td>
+                            <td>{{i.amount}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+               
+              </div>
+            </div>
+            
+    <!--Model end-->
+      </div>  
+
+     
+      
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

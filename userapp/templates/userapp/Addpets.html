@@ -1,0 +1,159 @@
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+<div class="w3-col m7">
+    
+   
+
+          <style>
+          
+          </style>
+      
+
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <h3>Add Pets</h3>
+        <hr class="w3-clear">
+        
+        <form action="{% url 'userapp:Addpets' %}" method="POST" class="form-horizontal" enctype="multipart/form-data" role="form">{% csrf_token %}
+                <div class="form-group">
+                   
+                <div class="row">
+                  <div class="col-md-6">
+                      Licence Proof:
+                  </div>
+                  <div class="col-md-6">
+                          <input type="file" style="border: none"  class="form-control" name="doc">
+                  </div>
+          </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                 Name :      
+                                </div>
+                                <div class="col-md-6">
+                                        <input type="text" class="form-control" name="name">
+                                </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                             Breed :      
+                          </div>
+                          <div class="col-md-6">
+                                  <input type="text" class="form-control" name="cato">
+                          </div>
+                  </div>
+                       
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                Photo :
+                            </div>
+                            <div class="col-md-6">
+                                    <input type="file" style="border: none" class="form-control" name="photo">
+                            </div>
+                    </div>
+
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            Gender :      
+                          </div>
+                          <div class="col-md-6">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      Male <input type="radio" class="form-control" value="male" name="gender">
+                                    </div>
+                                    <div class="col-md-6">
+                                      Female <input type="radio" class="form-control" value="female" name="gender">
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                       
+                        <div class="row">
+                          <div class="col-md-6">
+                            DOB :      
+                          </div>
+                          <div class="col-md-6">
+                                  <input type="date" class="form-control" name="dob">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            Age :      
+                          </div>
+                          <div class="col-md-6">
+                                  <input type="text" class="form-control" name="age">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-md-6">
+                                    Decscription : 
+                                </div>
+                                <div class="col-md-6">
+                                        <textarea name="desc" class="form-control" rows="3" required="required"></textarea>
+                                </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                              Vaccination Date :      
+                            </div>
+                            <div class="col-md-6">
+                                    <input type="date" class="form-control" name="Vdate">
+                            </div>
+                          </div>
+                          
+                      <div class="row">
+                            <div class="col-md-6">
+                              Vaccination Name :      
+                            </div>
+                            <div class="col-md-6">
+                                    <input type="text" class="form-control" name="vaccname">
+                            </div>
+                          </div>
+                        <br>
+                        <br>
+
+                    <div class="col-sm-12 col-sm-offset-2">
+                        <center><button type="submit" class="btn btn-primary" style="padding: 10px 0px; width: 100%">Submit</button></center>
+                    </div>
+                </div>
+        </form>
+        
+      </div>  
+
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+        <h2>My pets</h2>
+        <hr class="w3-clear">
+         <div style="overflow-x: hidden; overflow-y: scroll; height: 217px;">
+                  <div class="row" style="padding-left:17px;">
+                  {% for i in pets %}
+                  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 myitem">
+                    <div class="myitem1">
+                      <div class="row">
+                        <div class="mysp">
+                          <img src="{{ i.photo.url }}" alt="no img" class="myimg" width="150px" >
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 myMP">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myMP">
+                            <br>
+                            <b>{{i.name}}</b><br>
+                            
+                          </div>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>     
+        </div>
+   
+      </div>
+
+
+    <!-- End Middle Column -->
+
+    </div>
+{% endblock %}

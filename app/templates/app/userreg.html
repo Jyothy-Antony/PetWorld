@@ -1,0 +1,41 @@
+{% extends "app/applayout.html" %}
+{% block content %}
+
+    
+    <div class="container">
+        <form action="" method="POST" role="form" enctype="multipart/form-data" action="{% url 'app:userreg' %}">{% csrf_token %}
+            <center><legend>User Registration Form</legend></center>
+        
+        {% if err %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Email</strong>Sorry,{{err}} ...
+        </div>
+        {% endif %}
+        
+            <table class="table table-hover">
+                    <tbody>
+                        <tr><td>Profile Picture</td><td><input required type="file" class="form-control" name="propic" ></td></tr>
+                        <tr><td>First Name</td><td ><input required type="text" class="form-control" name="fname" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                        <tr><td>Last Name</td><td><input required type="text" class="form-control" name="lname" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+
+                        <tr><td>Date of Birth</td><td><input type="date" class="form-control" name="dob"></td></tr>
+                        <tr><td>Address</td><td><textarea required class="form-control" name="address" pattern = "^([a-zA-Z .&'-]+)$"></textarea></td></tr>
+                        <tr><td>Place</td><td><input type="text" required class="form-control" name="place" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                        <tr><td>Pincode</td><td><input type="text" class="form-control" name="pincode" maxlength="6"  pattern="[0-9]{6}"></td></tr>
+                        <tr><td>Street</td><td><input type="text" required class="form-control" name="street" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                        <tr><td>Land Mark</td><td><input type="text" required class="form-control" name="landmark" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                        <tr><td>Phone Number</td><td><input required type="text" class="form-control" name="phone" maxlength="10"  pattern="[0-9]{10}"></td></tr>
+                        <tr><td>Email <small>(Should be a valied Email address) </small></td><td><input type="email" required name="email" class="form-control" ></td></tr>
+                     
+                        <tr><td>Password</td><td><input type="password" required name="password" class="form-control"></td></tr>
+                       
+                    </tbody>
+                </table>
+            <button type="submit" class="col-md-12 btn btn-primary">Submit</button><br>
+        </form>
+        <br>
+    </div>
+    
+
+{% endblock %}

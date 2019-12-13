@@ -1,0 +1,119 @@
+
+
+
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+    <div class="w3-col m7">
+    
+    
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      
+        <h4>Trainers</h4><br>
+        <hr class="w3-clear">
+        <p>Boarding kennels. This is a place where dogs or cats are housed temporarily for a fee, an alternative to using a pet sitter. Although many people worry about the stress placed on the animal by being put in an unfamiliar and most likely crowded environment, the majority of boarding kennels work to reduce stress.</p>
+        
+        {% if err %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Error</strong> Plese add your pets<a style="float:right;height: 10px;padding-top: 10px;" class="btn btn-danger" href="{% url 'userapp:Addpets' %}">Add pets</a>
+        </div>
+        {% endif %}
+        <style>
+        .mydivs
+        {
+            padding: 15px;
+            height: 150px;
+            margin-left: 10px;
+            background-color:rgb(199, 202, 206);
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .mydivs:hover
+        {
+            background-color:rgb(145, 148, 151);
+        }
+        .profilimg
+        {
+            width: 100px;
+            height:100px;
+            overflow: hidden;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+        .proimg
+        {
+            width: 100px;
+        }
+        </style>
+        <div class="row">
+            {% for i in data %}
+            <div class="mydivs col-md-6">
+                <div class="row">
+                        <div class="profilimg">
+                            <img src="{{i.propic.url}}" style="
+                            width: 150px;
+                        " class="proimg">
+                      
+                          
+                       
+                        </div>
+                         
+                        <div style="margin-left: 10px;">
+                            <a class="btn btn-danger" style="margin-bottom: 10px;" href="{% url 'userapp:tfull' id=i.id %}">More..</a><br>
+                            <a class="btn btn-danger" data-toggle="modal" href='#modal-id{{data.id}}' >Add Request</a>
+                          
+                        </div>
+                       
+                </div>
+                <div class="mytext">
+                    <h6>{{i.fname}} {{i.lname}}</h6>
+                </div>
+            </div>
+            <!--Model start-->
+            <div class="modal fade" id="modal-id{{data.id}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                        
+                        <form action="{% url 'userapp:usertreg' %}" method="POST" role="form">
+                                {% csrf_token %}   <legend>Request Trainer</legend>
+                                <div class="form-group">
+                                    <label for="">Matter :</label>
+                                    <textarea name="matter" id="input" class="form-control" rows="3" required="required"></textarea>
+                                </div>
+                                <input type="hidden" name="trainerid" value="{{i.id}}">
+                                <div class="form-group">
+                                    <label for="">Dog Name :</label>
+                                    <select name="arg1" id="input" class="form-control" required="required">
+                                        <option value="~">------select------</option>
+                                        {% for j in pets %}
+                                        <option value="{{j.id}}">{{j.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+                        </form>
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!--Model end-->
+            {% endfor %}
+        </div>
+        <br>
+      </div>  
+      
+      
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+
+<style>
+.form-control
+{
+        margin-bottom: 10px;
+}
+</style>
+    <div class="w3-col m7">
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+          
+          </div>
+        </div>
+      </div>
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+       
+        <!-- <span class="w3-right w3-opacity">1 min</span> -->
+        <h4>Add Items</h4><br>
+        <hr class="w3-clear">
+        <p>Add all types of shopping item here </p><br><br>
+          <div class="w3-row-padding" style="margin:0 -16px">
+                <form action="{% url 'adminapp:editAdditem' data.id %}" method="POST" class="form-horizontal" role="form">{% csrf_token %}
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                          Item Name :      
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" class="form-control" value="{{data.item}}" name="item">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            Category :     
+                                        </div>
+                                        <div class="col-md-6">
+                                                <select name="cato" class="form-control" required="required" >
+                                                        <option value="{{ data.cato}}">{{data.cato}}</option>
+                                                        {% for i in catod %}
+                                                            <option value="{{i.cato}}">{{i.cato}}</option>
+                                                        {% endfor %}
+                                                </select>
+                                                
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            Decscription : 
+                                        </div>
+                                        <div class="col-md-6">
+                                                <textarea name="desc" value="{{data.desc}}" class="form-control" rows="3" required="required">{{data.desc}}</textarea>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            Quantity :
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" value="{{data.quty}}" class="form-control" name="quty">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            Expiry Date :
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" value="{{data.expdate}}" class="form-control" name="expdate">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                              Price :
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" value="{{data.price}}" class="form-control" name="price">
+                                        </div>
+                                </div>
+                                <!-- <div class="row">
+                                        <div class="col-md-6">
+                                              Colour :  
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" value="{{data.colour}}" class="form-control" name="colour">
+                                        </div>
+                                </div><br> -->
+                                <br>
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <center><button type="submit" class="btn btn-primary" style="padding: 10px 0px; width: 100%">Submit</button></center>
+                            </div>
+                        </div>
+                </form>
+        </div>
+        </div>
+        
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

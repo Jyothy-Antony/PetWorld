@@ -1,0 +1,61 @@
+{% extends "app/applayout.html" %}
+{% block content %}
+<style>
+    .myitem
+    {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .myitem1:hover
+    {
+        background-color:#e4e6e9;
+    }
+    .myitem1
+    {
+        border-radius: 5px; 
+        height: 170px;
+        margin: 5px;
+        box-shadow: 0px 2px 12px 0 rgba(0,0,0,.36);
+    }
+    .myimg
+    {
+        border-radius: 5px;
+    }
+    .mysp
+    {
+        margin: 10px; 
+        overflow:hidden;
+        height: 150px;
+        border-radius: 5PX;
+    }
+    .myMP
+    {
+        margin: 0px;padding: 0px;
+    }
+</style>
+<div class="row" style="margin:100px 10px 30px; ">
+   {% for i in data %} 
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 myitem">
+        <div class="myitem1">
+            <div class="row">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 mysp">
+                    <img src="{{i.propic.url}}" alt="no img" class="myimg" width="150px" >
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 myMP">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myMP">
+                        <br>
+                        <b>{{i.fname}} {{i.lname}}</b><br>
+                        <b>{{i.licno}}</b><br>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: 0px;padding: 0px;">
+                        {{i.exp}} Experience<br>
+                        <a href="{% url 'app:viewindborder' id=i.id %}" style="padding: 0px;" class="btn btn-primary">View</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

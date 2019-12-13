@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Colorlib Dog Adobe</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/app/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/app/css/animate.css">
+    <link rel="stylesheet" href="../../static/app/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="../../static/app/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../static/app/fonts/fontawesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../../static/app/fonts/flaticon/font/flaticon.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="../../static/app/css/style.css">
+    <!--W3 layout-->
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+body
+{background-color: #f5f7f8}
+</style>
+<link rel="stylesheet" href="../../static/trainerapp/w3.css">
+<link rel="stylesheet" href="../../static/trainerapp/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="../../static/trainerapp/font-awesome.min.css">
+
+  </head>
+  <body>
+    <header role="banner">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand absolute" style="color: black;" href="{% url 'app:demoapp' %}">Dog Adobe</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> 
+
+          <div class="collapse navbar-collapse" id="navbarsExample05">
+            <ul class="navbar-nav mx-auto pl-lg-5 pl-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'trainerapp:demotrainer' %}" style="color: black;">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:shopping' %}"  style="color: black;">Shopping</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:Ulogin' %}" style="color: black;">Log Out</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- END header -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+      <!-- The Grid -->
+      <div class="w3-row">
+        <!-- Left Column -->
+        <div class="w3-col m3">
+          <!-- Profile -->
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container">
+             <h4 class="w3-center">My Profile</h4>
+             <p class="w3-center"><img src="{{mydata.propic.url}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+             <hr>
+             <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>{{mydata.fname}} {{mydata.lname}}</p>
+             <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>{{mydata.address}}</p>
+             <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>{{mydata.dob}}</p>
+            </div>
+          </div>
+          <br>
+          
+          <!-- Accordion -->
+          <div class="w3-card w3-round">
+            <div class="w3-white">
+              <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Options</button>
+              <div id="Demo1" class="w3-hide w3-container">
+                <br>
+                {% if err %}
+                  <h2>{{err}}</h2>
+                  <div class="mybut">
+                    <center><a data-toggle="modal" href='#modal-id'>Monthly Payment</a></center>
+                </div>
+                {% else %}
+                  <div class="mybut">
+                      <center><a href="{% url 'trainerapp:addhandlers' %}">Add Handlers</a></center>
+                  </div>
+                  <div class="mybut">
+                      <center><a href="{% url 'trainerapp:myhandlers' %}">Handlers</a></center>
+                  </div>
+                  <div class="mybut">
+                    <center><a data-toggle="modal" href='#modal-id1'>Monthly Payment</a></center>
+                </div>
+                <div class="mybut">
+                    <center><a  href="{% url 'trainerapp:addprofile' %}">Add Profile</a></center>
+                </div>
+                <div class="mybut">
+                    <center><a  href="{% url 'trainerapp:viewpay' %}">View payment</a></center>
+                </div>
+                  {% endif %}
+                  <br>
+              </div>
+              <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Pets</button>
+              <div id="Demo2" class="w3-hide w3-container">
+                  {% if err %}
+                  <h2>{{err}}</h2>
+                {% else %}    
+                <div class="mybut">
+                      <center><a href="{% url 'trainerapp:petowners' %}">Pet Owners</a></center>
+                  </div>
+                  {% endif %}
+              </div>
+            
+              
+            </div>      
+          </div>
+          <br>
+          
+          <!-- Interests --> 
+        
+          <br>
+          
+          <!-- Alert Box -->
+          
+          <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+            <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
+              <i class="fa fa-remove"></i>
+            </span>
+            <p><strong>User Request</strong></p>
+            <p>People are looking at your profile. <a href="#">Find out who.</a></p>
+          </div>
+        <!-- End Left Column -->
+        </div>
+        
+        <!-- Middle Column -->
+    <!-- END slider -->
+    {% block content %}
+
+    {% endblock %}
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        
+      </div>
+      <br>
+  {% if err %}
+  {% else %}
+  {% for i in data %}
+    {% for j in full %}
+      {% with a=j.id %}
+        {% with b=i.sentid %}
+          {% if a == b %} 
+            {% with d=i.status %}
+              {% if d != c %}
+              <div class="w3-card w3-round w3-white w3-center">
+                <div class="w3-container">
+                  <p>User Request</p>
+                  <img src="{{j.propic.url}}" alt="Avatar" style="width:50%"><br>
+                  <span>{{j.fname}} {{j.lname}}</span><br>
+                    <div class="w3-row w3-opacity">
+                      <div class="w3-half">
+                        <a data-toggle="modal" href='#modal-id{{i.id}}' class="w3-button w3-block w3-green w3-section" title="Accept">Accept</a>
+                      </div>
+                      <div class="w3-half">
+                        <a class="w3-button w3-block w3-red w3-section"  href="{% url 'trainerapp:reqdel' i.id %}">Reject</a>
+                          </div>
+                      <div class="">
+                          <a class="w3-button w3-block w3-red w3-section"  href="{% url 'trainerapp:viewrequests' i.id %}">View Pets</a>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              <br>
+              <div class="modal fade" id="modal-id{{i.id}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title">Accept Request</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        {{i.mater}}
+                        <form action="{% url 'trainerapp:check' i.id %}" method="POST" role="form">
+                          {% csrf_token %} <legend></legend>
+                          <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="date" name="date" class="form-control" id="" placeholder="Input field">
+                          </div>
+                          <div class="form-group">
+                              <label for="">Handlers</label>
+                              
+                              <select  id="input" class="form-control" required="required" name=handler style="
+                              height: 54.25px;
+                          ">
+                                {% for i in handlers %} 
+                                <option value="{{i.name}}">{{i.name}}</option>
+                                {% endfor %}
+                              </select>
+                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Amount</label>
+                              <input type="text" name="amount" class="form-control" id="" placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Days</label>
+                              <input type="text" name="days" class="form-control" id="" placeholder="">
+                            </div>
+                            <div class="form-group">
+                              <label for="">Duration</label>
+                              <input type="text" name="duration" class="form-control" id="" placeholder="">
+                            </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endwith %}
+          {% endif %}
+        {% endwith %}
+      {% endwith %}
+    {% endfor %}
+  {% endfor %}
+  
+  {% endif %}
+  
+ <!--#############################################################################################-->
+<div class="modal fade" id="modal-id1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Monthly Payment</h4>
+      </div>
+      <div class="modal-body">
+          <form role="form" method="POST"  action="{% url 'app:monthlypay' %}">{% csrf_token %}
+            <style>
+            .mybuttc
+            {
+                width: 100%;
+                height: 40px;
+            }
+            </style>
+              <table class="table table-condensed table-hover" style=" width: 100%;">
+                <tbody>
+                  <input type="hidden" value="{{mydata.id}}" name="myid">
+                  <tr><td colspan="3"><small>Name on Card</small><br><input type="text" class="mybuttc" name="name"></td></tr>
+                  <tr><td colspan="3"><small>Card Number</small><br><input type="text" class="mybuttc" name="cardno"></td></tr>
+                  <tr><td><small>CVV</small><br><input type="text" class="mybuttc" name="cvv"></td><td><small>Expiration</small><br><input type="text" class="mybuttc" name="month"></td><td><br><input type="text" class="mybuttc" name="year"></td></tr>
+                  <tr><td colspan="3"><center>20000 Rs</center></td></tr>
+                  <tr><td colspan="3"> <button type="submit" class="btn btn-primary col-md-12">Confirm</button></td></tr>
+                </tbody>
+              </table>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!--#######################################################################################-->
+      
+      <br>
+      
+    
+      
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+    <!-- Starting -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-4 mb-5">
+            <h3>About The Dog Adobe</h3>
+            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.</p>
+            <ul class="list-unstyled footer-link d-flex footer-social">
+              <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+              <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+            </ul>
+
+          </div>
+          <div class="col-md-5 mb-5">
+            <h3>Contact Info</h3>
+            <ul class="list-unstyled footer-link">
+              <li class="d-block">
+                <span class="d-block">Address:</span>
+                <span class="text-white">34 Street Name, City Name Here, United States</span></li>
+              <li class="d-block"><span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span></li>
+              <li class="d-block"><span class="d-block">Email:</span><span class="text-white">info@yourdomain.com</span></li>
+            </ul>
+          </div>
+          <div class="col-md-3 mb-5">
+            <h3>Quick Links</h3>
+            <ul class="list-unstyled footer-link">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Disclaimers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+          
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-md-center text-left">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="{% url 'adminapp:login' %}" target="_blank">Colorlib</a></p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END footer -->
+
+    <!-- loader -->
+
+    <!-- w3 script -->
+
+
+    <script>
+      // Accordion
+      function myFunction(id) {
+          var x = document.getElementById(id);
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+              x.previousElementSibling.className += " w3-theme-d1";
+          } else { 
+              x.className = x.className.replace("w3-show", "");
+              x.previousElementSibling.className = 
+              x.previousElementSibling.className.replace(" w3-theme-d1", "");
+          }
+      }
+      
+      // Used to toggle the menu on smaller screens when clicking on the menu button
+      function openNav() {
+          var x = document.getElementById("navDemo");
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+          } else { 
+              x.className = x.className.replace(" w3-show", "");
+          }
+      }
+      </script>
+
+
+      <!-- w3 scripts -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="../../static/app/js/jquery-3.2.1.min.js"></script>
+    <script src="../../static/app/js/popper.min.js"></script>
+    <script src="../../static/app/js/bootstrap.min.js"></script>
+    <script src="../../static/app/js/owl.carousel.min.js"></script>
+    <script src="../../static/app/js/jquery.waypoints.min.js"></script>
+    <script src="../../static/app/js/main.js"></script>
+  </body>
+</html>

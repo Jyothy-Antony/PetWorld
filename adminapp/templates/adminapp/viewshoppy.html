@@ -1,0 +1,81 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+
+    <div class="w3-col m7">
+    
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <h4>All Users </h4>
+        <hr class="w3-clear">
+          <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                        <th>address</th>
+                       
+                        <th>date</th>
+                        <th>item</th>
+                        <th>qty</th>
+                        <th>price</th>
+                        <th>total</th>
+                        <th>payment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for i in data %}
+                      {% for j in userdata %}
+                        {% with a=i.userid %}
+                          {% with b=j.id %}
+                            {% if a == b %}
+                              <tr>
+                                    <td>{{i.fname}} {{l.fname}}</td>
+                                    
+                                    <td>{{i.date}}</td>
+                                    <td>{{i.item}}</td>
+                                    <td>{{i.qty}}</td>
+                                    <td>{{i.price}}</td>
+                                    <td>{{i.total}}</td>
+                                    <td>{{i.payment}}</td>
+                              </tr>
+                            {% endif %}
+                          {% endwith %}
+                        {% endwith %}
+                      {% endfor %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+        </div>
+        </div>
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+            <h2>Remaining Products</h2>
+            <hr class="w3-clear">
+             <div style="overflow-x: hidden; overflow-y: scroll; height: 217px;">
+                    <div class="row" style="padding-left:17px;">
+                      {% for i in dataitem %}
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 myitem">
+                            <div class="myitem1">
+                              <div class="row">
+                                <div class="mysp">
+                                  <img src="{{i.image.url}} " alt="no img" class="myimg" width="150px" >
+                                </div>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 myMP">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myMP"><br>
+                                      Balance:<b>{{i.quty}}</b><br>
+                                    <a href="#" style="padding: 0px;" class="btn btn-primary">{{i.item}}</a>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>     
+            </div>
+            <br>
+          </div>
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

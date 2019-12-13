@@ -1,0 +1,98 @@
+{% extends "boardingapp/boardinglayout.html" %}
+{% block content %}
+<div class="w3-col m7">
+    
+ 
+
+        <style>
+        .myimg
+        {
+          height:150px;
+          width: 150px;
+          overflow: hidden;
+        }
+        .myimage
+        {
+          width: 150px;
+        }
+        .padd
+        {
+          padding-top: 30px;
+          
+        }
+        </style>
+    
+
+  {% if data %}
+    {% for data1 in data %}
+    <div class="w3-container w3-card w3-white w3-round w3-margin" ><br>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="myimg">
+            <img class="img-responsive myimage" src="{{data1.photo.url}}" alt="Image" >
+          </div>
+        </div>
+        <div class="col-md-8 padd">
+          <h3 style="font-size: 80px;">{{data1.name}}</h3>
+        </div>
+      </div>
+      <hr class="w3-clear"><br>
+      
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          Breed 
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          :{{data1.cato}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          Gender
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          :{{data1.gender}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          Age
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          :{{data1.age}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          Description
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          :{{data1.desc}}
+        </div>
+      </div>
+    
+   
+      <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              Licenc
+            </div>
+          
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="myimg" style="margin-bottom: 50px;">
+                <img class="myimage" src="{{data1.doc.url}}" alt="Image">
+            </div>
+          </div>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+  {% endif %} 
+     
+  <!-- End Middle Column -->
+  
+  
+  
+
+  </div>
+
+{% endblock %}

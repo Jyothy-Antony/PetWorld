@@ -1,0 +1,46 @@
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+    <div class="w3-col m7">
+    
+    
+
+{% if media %}
+  {% for i in media %}
+    {% for j in full %}
+      {% with a=i.sendid %}
+      {% with b=j.id %}
+      {% if a == b %}
+        {% if i.vidimg == "image" %}
+          <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity"></span>
+            <h4>{{j.fname}} {{j.lname}}</h4><br>
+            <hr class="w3-clear">
+            <!-- <p>Have you seen this?</p> -->
+            <img src="{{i.media.url}}" style="width:100%" class="w3-margin-bottom">
+        
+        
+          </div>
+        {% else %}
+          <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <img src="https://www.w3schools.com/w3images/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity">{{j.usertype}}</span>
+            <h4>{{j.fname}} {{j.lname}}</h4><br>
+            <hr class="w3-clear">
+            <!-- <p>Have you seen this?</p> -->
+            <video src="{{i.media.url}}" style="width:100%" controls class="w3-margin-bottom"></video>
+           
+        
+          </div>
+        {% endif %}
+      {% endif %}
+      {% endwith %}
+      {% endwith %}
+    {% endfor %} 
+  {% endfor %}
+{% endif %}
+      
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}
+

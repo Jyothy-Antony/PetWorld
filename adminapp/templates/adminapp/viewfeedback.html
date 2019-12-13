@@ -1,0 +1,44 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+
+    <div class="w3-col m7">
+    
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <h4>All Users </h4>
+        <hr class="w3-clear">
+          <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Feedback</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                      {% for i in data %}
+                      
+                              <tr>
+                                    <td>{{i.name}}</td>
+                                   
+                                    <td>{{i.contact}}</td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.feedback}}</td>
+                                   
+                              </tr>
+                           
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+        </div>
+        </div>
+    
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

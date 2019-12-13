@@ -1,0 +1,34 @@
+{% extends "trainerapp/trainlayout.html" %}
+{% block content %}
+
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+       
+      </div>
+      
+      
+      {% if data2 %}
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      
+        <h4>Handlers</h4><br>
+        <hr class="w3-clear">
+        <table class="table table-striped table-hover">
+                <tbody>
+                        <tr><td>Handler name </td><td>{{data2.name}}</td></tr>
+                        <tr><td>Email </td><td>{{data2.emailid}}</td></tr>
+                        <tr><td>Phone </td><td>{{data2.phone}}</td></tr>
+                        <tr><td>Assigned Dog </td><td>{{data2.dogid}}</td></tr>
+                </tbody>
+            </table>
+        <img  src="{{data2.tlicence.url}}">
+             
+      
+        
+        <br> 
+      </div>  
+      {% endif %}
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

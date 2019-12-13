@@ -1,0 +1,186 @@
+
+{% extends "app/applayout.html" %}
+{% block content %}
+
+<html>
+
+<head>
+
+
+<style>
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+.gallery-wrap .img-big-wrap img {
+    height: 400px;
+    width: 400px;
+   /* width: auto;*/
+    display: inline-block;
+    cursor: zoom-in;
+}
+
+
+.gallery-wrap .img-small-wrap .item-gallery {
+    width: 70px;
+    height: auto;
+    margin: 7px 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.gallery-wrap .img-small-wrap {
+    text-align: center;
+}
+.gallery-wrap .img-small-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    /*cursor: zoom-in;*/
+}
+.price-title{
+    font-weight: 700;
+}
+.price{
+    font-size: 24px;
+    line-height: 31px;
+    text-transform: uppercase;
+    max-height: 66px;
+    overflow: hidden;
+    font-family: 'Open Sans',Arial,sans-serif;
+    font-weight: 700;
+    width: 100%;
+    padding: 0;
+    float: none;
+
+
+}
+.color-price-waanbii{
+    color: #FA3A11; 
+}
+.color-box-waanbii{
+    background: #FD6342; 
+    color:white;
+}
+
+.fa-beat {
+  animation:fa-beat 5s ease infinite;
+}
+@keyframes fa-beat {
+  0% {
+    transform:scale(1);
+  }
+  5% {
+    transform:scale(1.25);
+  }
+  20% {
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(1);
+  }
+  35% {
+    transform:scale(1.25);
+  }
+  50% {
+    transform:scale(1);
+  }
+  55% {
+    transform:scale(1.25);
+  }
+  70% {
+    transform:scale(1);
+  }
+}
+</style>
+</head>
+<body>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="container">
+    <br>
+<div class="card border-0">
+	<div class="row">
+		<aside class="col-sm-4">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div> <a href="#"><img src="{{data.propic.url}}"></a></div>
+</div>
+<div class="img-small-wrap">
+    {% for i in data1 %}
+    {% if i.vidimg == "image" %}
+        <div class="item-gallery"> <img src="{{i.media.url}}" style="width:200px;height:100px"> </div>
+
+        {% else %}
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+         
+          <hr class="w3-clear">
+         
+          <!-- <video src="{{i.media.url}}" style="width:100%" controls class="w3-margin-bottom"></video> -->
+        <iframe src="{{i.media.url}}"></iframe>
+        
+        </div>
+      {% endif %}
+      {% endfor %}
+</div>
+
+
+  
+</article>
+		</aside>
+		<aside class="col-sm-5">
+<article class="card-body m-0 pt-0 pl-5">
+	<h3 class="title text-uppercase">{{data.fname}} {{data.lname}}</h3>
+<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="review-no ml-2">(41 avis)</span>
+							</div>
+						</div>
+<div class="mb-3 mt-3"> 
+		<span class="h7 text-success">{{data.email}}</span>
+</div>						
+<div class="mb-3 mt-3"> 
+    <span class="price-title">{{data.compname}}</span><br>
+		<span class="price color-price-waanbii">{{data.exp}}<sup></sup></span>
+</div>
+<dl class="item-property">
+  <dt>Description</dt>
+  <dd><p> {{data.desc}}</p></dd>
+</dl>
+
+</article>
+		</aside>
+		<aside class="col-sm-3">
+		    	<div class="row">
+			<dl class="param param-inline">
+			 
+			   </div>
+        </aside>
+        
+
+
+
+
+
+
+        
+	</div>
+</div>
+
+
+</div>
+</body>
+<!--container.//-->
+{% endblock %}

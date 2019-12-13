@@ -1,0 +1,48 @@
+{% extends "app/applayout.html" %}
+{% block content %}
+
+<div class="container">
+    <form action="" method="POST" role="form" enctype="multipart/form-data" action="{% url 'app:trainereg' %}">{% csrf_token %}
+       <center> <legend>Trainer Registration Form</legend></center>
+       {% if err %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Email</strong>Sorry,{{err}} ...
+        </div>
+        {% endif %}
+       <table class="table table-hover">
+            <tbody>
+                <tr><td>First Name</td><td><input type="text"  required class="form-control" name="fname" pattern = "^([a-zA-Z .&'-]+)$" > </td></tr>
+                <tr><td>Last Name</td><td><input type="text"  required class="form-control" name="lname"pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                <tr><td>Licence No:</td><td><input type="text"  required class="form-control" name="licno"maxlength="8" pattern="[0-9]{8}"></td></tr>
+                <tr><td>Licence Proof<small>(Document)</small></td><td><input type="file" class="form-control" name="licno"  required></td></tr>
+                <tr><td>Address</td><td><textarea class="form-control"  required name="address"pattern = "^([a-zA-Z .&'-]+)$"></textarea></td></tr>
+                <tr><td>Place</td><td><input type="text"  required class="form-control" name="place"pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                <tr><td>Street</td><td><input type="text"  required class="form-control" name="street" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                <tr><td>Land Mark</td><td><input type="text"  required class="form-control" name="landmark" pattern = "^([a-zA-Z .&'-]+)$"></td></tr>
+                <tr><td>Pincode</td><td><input type="text"  required class="form-control" name="pincode" maxlength="6" pattern="[0-9]{6}"></td></tr>
+                <tr><td>Institute Name</td><td><input type="text" class="form-control" name="compname" pattern = "^([a-zA-Z .&'-]+)$" required></td></tr>
+                <tr><td> Trainer Phone Number</td><td><input type="text" class="form-control" name="phone"  required  maxlength="10" pattern="[0-9]{10}"></td></tr>
+               
+                <tr><td>Date of Birth</td><td><input type="date"  class="form-control" name="dob"></td></tr>
+                
+
+                <tr><td>Profile Picture</td><td><input  required type="file" class="form-control" name="propic"></td></tr>
+         
+                <tr><td>Experiences <small>(in years)</small></td><td><input  required class="form-control" type="text" name="exp"></td></tr>
+                <tr><td>Your Description</td><td><textarea class="form-control" name="desc" pattern = "^([a-zA-Z .&'-]+)$"></textarea></td></tr>
+      
+                <tr><td>Email</td><td><input type="email"  required name="email" class="form-control"></td></tr>
+              
+              
+                <tr><td>Password</td><td><input type="password"  required id="pass" class="form-control" name="cpassword"></td></tr>
+                <tr><td>Confirm Password</td><td><input  required type="password" name="password" class="form-control" id="conpass"></td></tr>
+               </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary col-md-12">Submit</button>
+    </form>
+    <br>
+</div>
+
+{% endblock %}
+

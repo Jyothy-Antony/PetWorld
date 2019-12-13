@@ -1,0 +1,74 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+
+<style>
+.form-control
+{
+        margin-bottom: 10px;
+}
+</style>
+    <div class="w3-col m7">
+    
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <h4>Add all types of pets here</h4>
+        <hr class="w3-clear">
+          <div class="w3-row-padding" style="margin:0 -16px">
+                <form action="{% url 'adminapp:addpetcato' %}" method="POST" class="form-horizontal" enctype="multipart/form-data" role="form">{% csrf_token %}
+                        <div class="form-group">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                          Category Name :      
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="text" class="form-control" name="cato">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                          Category Images :      
+                                        </div>
+                                        <div class="col-md-6">
+                                                <input type="file" style="border: none;" class="form-control" name="catoimg">
+                                        </div>
+                                </div>
+                            <div class="col-sm-12 col-sm-offset-2">
+                                <center><button type="submit" class="btn btn-primary" style="padding: 10px 0px; width: 100%">Submit</button></center>
+                            </div>
+                        </div>
+                </form>
+                
+
+
+             
+        </div>
+        </div>
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+            <h2>Pet CATOs</h2>
+            <hr class="w3-clear">
+             <div style="overflow-x: hidden; overflow-y: scroll; height: 217px;">
+                    <div class="row" style="padding-left:17px;">
+                      {% for i in petcato %}
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 myitem">
+                            <div class="myitem1">
+                              <div class="row">
+                                <div class="mysp">
+                                  <img src="{{i.petcatoimg.url}}" alt="no img" class="myimg" width="150px" >
+                                </div>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 myMP">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 myMP">
+                                    <b>{{i.cato}}</b><br>
+                                    <a href="{% url 'adminapp:deletepetcato' i.id %}" style="padding: 0px;" class="btn btn-primary">Get One</a>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                    </div>     
+            </div>
+            <br>
+          </div>
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

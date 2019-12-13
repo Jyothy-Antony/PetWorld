@@ -1,0 +1,150 @@
+{% extends "adminapp/adminlayout.html" %}
+{% block content %}
+    <div class="w3-col m7">
+    
+      <!--div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Social Media template by w3.css</h6>
+              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> �Post</button> 
+            </div>
+          </div>
+        </div>
+      </div-->
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+        <!-- <span class="w3-right w3-opacity">1 min</span> -->
+        <h4> Users</h4><br>
+        <hr class="w3-clear">
+       
+          <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="table-responsive">
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                            
+                              <th>password</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                             
+                              <th>usertype</th>
+                              <th>Delete</th>  
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% if user %}
+                      {% for i in user %}
+                      <tr>
+                        
+                          <td>{{i.password}}</td>
+                          <td>{{i.email}}</td>
+                          <td>{{i.phone}}</td>
+                        
+                          <td>{{i.usertype}}</td>
+                          <td><a class="btn btn-success" href="{% url 'adminapp:usrdel' id=i.id %}">Delete</a></td>
+                      </tr>
+                      {% endfor %}
+                      {% endif %}
+                      </tbody>
+                  </table>
+              </div>
+        </div>
+       
+      </div>
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+       
+          <!-- <span class="w3-right w3-opacity">1 min</span> -->
+          <h4>Boardings</h4><br>
+          <hr class="w3-clear">
+          <p></p>
+            <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="table-responsive">
+                  <table class="table table-hover">
+                      <thead>
+                  <tr>
+                     
+                      <th>password</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Experience</th>
+                      <th>Company</th>
+                      <th>usertype</th> 
+                      <th>Delete</th>
+                      <th>Approve</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% if boarding %}
+                  {% for i in boarding %}
+                  <tr>
+                     
+                      <td>{{i.password}}</td>
+                      <td>{{i.email}}</td>
+                      <td>{{i.phone}}</td>
+                      <td>{{i.exp}}</td>
+                      <td>{{i.compname}}</td>
+                      <td>{{i.usertype}}</td> 
+                      <td><a class="btn btn-success" href="{% url 'adminapp:boadel' id=i.id %}">Delete</a></td>
+                      <td><a class="btn btn-success" href="{% url 'adminapp:ApproveB' id=i.id %}">{{i.approve}}</a></td>
+                  </tr>
+                  {% endfor %}
+                  {% endif %}
+              </tbody>
+          </table>
+          </div>
+       
+        </div>
+        </div>
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+          <!-- <span class="w3-right w3-opacity">1 min</span> -->
+          <h4>Trainers</h4><br>
+          <hr class="w3-clear">
+          <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+            <div class="w3-row-padding" style="margin:0 -16px">
+              <div class="table-responsive">
+                  <table class="table table-hover">
+                      <thead>
+                      <tr>
+                        
+                          <th>password</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Experience</th>
+                          <th>Company</th>
+                          <th>usertype</th> 
+                          <th>Delete</th>
+                          <th>Approve</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% if trainer %}
+                      {% for i in trainer %}
+                      <tr>
+                         
+                          <td>{{i.password}}</td>
+                          <td>{{i.email}}</td>
+                          <td>{{i.phone}}</td>
+                          <td>{{i.exp}}</td>
+                          <td>{{i.compname}}</td>
+                          <td>{{i.usertype}}</td>
+                          <td><a class="btn btn-success" href="{% url 'adminapp:tradel' id=i.id %}">Delete</a></td>
+                          <td><a class="btn btn-success" href="{% url 'adminapp:ApproveT' id=i.id %}">{{i.approve}}</a></td>
+                      </tr>
+                      {% endfor %}
+                      {% endif %}
+                  </tbody>
+              </table>
+          </div>
+     
+        </div>
+        </div>
+      
+      
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}
+

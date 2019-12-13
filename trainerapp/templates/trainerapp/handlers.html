@@ -1,0 +1,72 @@
+{% extends "trainerapp/trainlayout.html" %}
+{% block content %}
+<style>
+        .mydivs
+        {
+            padding: 15px;
+            height: 150px;
+            margin-left: 10px;
+            background-color:rgb(199, 202, 206);
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .mydivs:hover
+        {
+            background-color:rgb(145, 148, 151);
+        }
+        .profilimg
+        {
+            width: 100px;
+            height:100px;
+            overflow: hidden;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+        .proimg
+        {
+            width: 100px;
+        }
+        </style>
+    <div class="w3-col m7">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity"></h6>
+              <p contenteditable="true" class="w3-border w3-padding"></p>
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> </button> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">16 min</span>
+        <h4>Boardings</h4><br>
+        <hr class="w3-clear">
+        <div class="row">
+                {% for i in data2 %}
+                <div class="mydivs col-md-6">
+                    <div class="row">
+                            <div class="profilimg">
+                                <img src="{{i.photo.url}}" class="proimg">
+                            </div>
+                            <div class="mytext">
+                                <a href="{% url 'trainerapp:handler' i.id %}">{{i.name}}</a>
+                            </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+        
+        <br> 
+      </div>  
+
+      
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

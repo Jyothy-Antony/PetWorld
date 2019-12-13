@@ -1,0 +1,57 @@
+{% extends "boardingapp/boardinglayout.html" %}
+{% block content %}
+
+<style>
+.form-control
+{
+        margin-bottom: 10px;
+}
+</style>
+    <div class="w3-col m7">
+    
+      
+      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>Add Items</h4><br>
+        <hr class="w3-clear">
+        <p>Add all types of shopping item here </p><br><br>
+          <div class="w3-row-padding" style="margin:0 -16px">
+                <form action="{% url 'boardingapp:addprofile' %}" method="POST" enctype="multipart/form-data" role="form">{% csrf_token %}
+                    <legend>Form title</legend>
+                        <div class="form-group">
+                            <label for="">label</label>
+                            <select onchange="myfun()" name="vidimg" id="vidimg{{i.id}}" class="form-control" required="required">
+                                <option value="image">Image</option>
+                                <option value="video">Video</option>
+                            </select>
+                          
+                            <input type="file" name="media" multiple id="media{{i.id}}" accept="image/gif,image/3gpp, image/jpeg" class="form-control" value=""  required="required" title="">
+                            <script>
+                                function myfun()
+                                {
+                                    var nan=document.getElementById("vidimg{{i.id}}").value
+                                    if (nan == "image")
+                                    {
+                                        document.getElementById("media{{i.id}}").accept="image/gif, image/jpeg,image/3gpp"
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("media{{i.id}}").accept="video/*"
+                                    }
+                                }
+                            </script>
+                        </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
+
+
+             
+        </div>
+        </div>
+       
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}

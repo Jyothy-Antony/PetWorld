@@ -1,0 +1,155 @@
+
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+    <div class="w3-col m7">
+    
+      <!-- <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Social Media template by w3.css</h6>
+              <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> �Post</button> 
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+          <style>
+          .myimg
+          {
+            height:150px;
+            width: 150px;
+            overflow: hidden;
+          }
+          .myimage
+          {
+            width: 150px;
+          }
+          .padd
+          {
+            padding-top: 30px;
+            
+          }
+          </style>
+      
+
+    {% if data %}
+      {% for data1 in data %}
+      <div class="w3-container w3-card w3-white w3-round w3-margin" ><br>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="myimg">
+              <img class="img-responsive myimage" src="{{data1.photo.url}}" alt="Image" >
+            </div>
+          </div>
+          <div class="col-md-8 padd">
+            <h3 style="font-size: 50px;">{{data1.name}}</h3>
+          </div>
+        </div>
+        <hr class="w3-clear"><br>
+        
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Breed 
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.cato}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Gender
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.gender}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Age
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.age}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Description
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.desc}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Next Vacc date
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.Vdate}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            Balance date
+          </div>
+          <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            :{{data1.bal}}
+            {% if data1.bal < 5 %}
+            
+            <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a>
+            
+            <div class="modal fade" id="modal-id">
+              
+              <form action="{% url 'app:nvacc' data1.id %}" method="POST" role="form" >{% csrf_token %}
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Next Vaccination Date </h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-lg-6">
+                                Next Vaccination Date
+                            </div>
+                            <div class="col-lg-6">
+                              <input type="text" name="nvacc">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save and done</button>
+                        </div>
+                      </div>
+                  </div>
+              </form>
+            </div>
+            {% endif %}
+          </div> -->
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                Licenc
+              </div>
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="myimg" style="margin-bottom: 50px;">
+                  <img class="myimage" src="{{data1.doc.url}}" alt="Image">
+              </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+    {% endif %} 
+       
+    <!-- End Middle Column -->
+    
+    
+    
+
+    </div>
+{% endblock %}
+

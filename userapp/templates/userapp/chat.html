@@ -1,0 +1,110 @@
+{% extends "userapp/userlayout.html" %}
+{% block content %}
+
+<div class="w3-col m7">
+    
+       
+        <style>
+        .mainchat
+        {
+            background-color: gray;
+            height:400px;
+            padding: 10px;
+        }
+        .chatbody
+        {
+            background-color: white;
+            border-radius: 5px;
+            height: 320px;
+            overflow:scroll;
+        }
+        .chattext
+        {
+            margin-top: 10px;
+            background-color: white;
+            border-radius: 5px;
+        }
+        .chattext
+        {
+            border: none;
+        }
+        .mybutton
+        {
+            height: 50px;
+            width: 111px;
+            margin-left: -29px;
+            text-align: center;
+            padding-top: 15%;
+            border-radius: 5px;
+            background-color: #ffc107;
+        }
+        .senter
+        {
+        background-color: #f5d019;
+        padding: 10px;
+        margin: 10px;
+        float:right;
+        width: 80%;
+        border-radius: 5px;
+        }
+        .reciver
+        {
+        background-color: #c3f397;
+        padding: 10px;
+        margin: 10px;
+        float: left;
+        width: 80%;
+        border-radius: 5px;
+        }
+        </style>
+        
+        <div class="w3-container w3-card .w3-grey w3-round w3-margin" style="background-color: gray;"><br>
+          <img src="https://www.w3schools.com/w3images/avatar5.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+          
+          <h4>Trainers/Bordings</h4><br>
+          <div class="mainchat">
+              <div class="col-md-12 chatbody" id="chatbody">
+                {% if chat %}
+                {% for i in chat %}
+                  {% with a=i.sendid %}
+                    {% with b=i.resvid %} 
+                      {% if i.sendid == myid and i.resvid == thid %}
+                        <div class="senter">
+                          {{i.msg}}
+                        </div>
+                      {% endif %}  
+                      {% if i.sendid == thid and i.resvid == myid %}
+                        <div class="reciver">
+                          {{i.msg}}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+                  {% endwith %}
+                {% endfor %}
+              {% else %}
+                not correct
+              {% endif %}
+                </div>
+              <div class="chattext">
+                  <form action="{% url 'userapp:chat' recdata.id %}?id=recdata.id" method="POST" role="form">
+                    {% csrf_token %} <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" name="msg" class="form-control chattxt" id="" placeholder="Input field">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="mybutton" value="Send" >
+                            <!-- <a type="submit" class="mybutton" >Send</a> -->
+                        </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          </div>  
+  
+          <script>
+            document.getElementById("chatbody").scrollBy(0, 10000);
+          </script>
+        
+      <!-- End Middle Column -->
+      </div>
+{% endblock %}

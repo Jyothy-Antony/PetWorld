@@ -1,0 +1,46 @@
+{% extends "trainerapp/trainlayout.html" %}
+{% block content %}
+<div class="w3-col m7">
+    
+        <div class="w3-row-padding">
+          <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+              <div class="w3-container w3-padding">
+                <h6 class="w3-opacity">Social Media template by w3.css</h6>
+                <p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
+                <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i> �Post</button> 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <img src="{{ bdata.username.url }}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+          <span class="w3-right w3-opacity">16 min</span>
+          <h4>Trainer</h4><br>
+          <hr class="w3-clear">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          
+          
+          <table class="table table-striped table-hover">
+              <tbody>
+                      <tr><td>User name </td><td>{{bdata.username}}</td></tr>
+                      <tr><td>Email </td><td>{{bdata.email}}</td></tr>
+                      <tr><td>Phone </td><td>{{bdata.phone}}</td></tr>
+                      <tr><td>Experience </td><td>{{bdata.exp}}</td></tr>
+                      <tr><td>Company name </td><td>{{bdata.compname}}</td></tr>
+                      
+              </tbody>
+          </table>
+          <br>
+          <a class="btn btn-danger" href="{% url 'trainerapp:chat' bdata.id %}?id=bdata.id" >Chat</a>
+          
+          <br>
+          
+        </div>  
+  
+        
+        
+      <!-- End Middle Column -->
+      </div>
+{% endblock %}

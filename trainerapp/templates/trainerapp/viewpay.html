@@ -1,0 +1,61 @@
+{% extends "trainerapp/trainlayout.html" %}
+{% block content %}
+
+<style>
+.form-control
+{
+        margin-bottom: 10px;
+}
+</style>
+    <div class="w3-col m7">
+    
+      
+      
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+         
+          
+           
+            <hr class="w3-clear">
+          
+              <div class="w3-row-padding" style="margin:0 -16px">
+                    
+                    <div class="table-responsive">
+                            <table class="table table-hover">
+                                    <thead>
+                                            <tr>
+                                            <th>User id</th>      
+                                            <th>Status</th>
+                                            <th>Amount</th>
+                                           
+                                          
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for i in data4 %}
+                                            {% for j in data %}
+                                            {% with a=i.userid %}
+                                            {% with b=j.id %}
+                                            {% if a == b %}
+
+                                            <tr>
+                                              <td>{{j.fname}} {{j.lname}}</td>
+                                              <td>{{i.status}}</td>
+                                              <td>{{i.amount}}</td>
+                                            
+                                            
+                                           
+                                            </tr>
+                                            {% endif %}
+                                            {% endwith %}
+                                            {% endwith %}
+                                            {% endfor %}
+                                            {% endfor %}
+                                    </tbody>
+                            </table>
+                    </div>
+                    
+              </div>
+            </div>
+    <!-- End Middle Column -->
+    </div>
+{% endblock %}
